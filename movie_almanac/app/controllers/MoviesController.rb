@@ -1,40 +1,27 @@
 class MoviesController < ApplicationController
+
  def index
   	@movies = Movie.all
-  end
-
-  def new
-  	@movie = Movie.all
-  end
-
-  def create
-  	@movie = Movie.new(movie_params)
-  	if movie.save
-  		redirect_to movie_path(movie)
-  	else redirect_to new_movie_path
-  		flash[:error] = movie.errors.full_messages
-  	end
+    render :index
+    # render :text
   end
 
   def show
-  	movie_id = params[:id]
-  	@movie = Movie.find_by(id: movie_id)
   end
 
-  def edit 
-
+  def new
   end
 
-   def update
-  	
+  def edit
   end
 
-   def destroy
-  	
+  def create
   end
 
-  private 
-  def movie_params
-  	params.require(:movie).permit(:title, :description, :year)
+  def update
   end
+
+  def destroy
+  end
+
 end
