@@ -10,18 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729143237) do
+ActiveRecord::Schema.define(version: 20160729212539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "actors", force: :cascade do |t|
-    t.string "title"
-    t.string "string"
-    t.string "description"
-    t.string "text"
-    t.string "year"
-    t.string "integer"
+    t.string "first_name"
+    t.string "last_name"
+  end
+
+  create_table "actors_movies", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "actor_id"
+    t.index ["actor_id"], name: "index_actors_movies_on_actor_id", using: :btree
+    t.index ["movie_id"], name: "index_actors_movies_on_movie_id", using: :btree
   end
 
   create_table "movies", force: :cascade do |t|
@@ -31,13 +34,6 @@ ActiveRecord::Schema.define(version: 20160729143237) do
     t.string "text"
     t.string "year"
     t.string "integer"
-  end
-
-  create_table "movies_and_actors", force: :cascade do |t|
-    t.integer "movie_id"
-    t.integer "actor_id"
-    t.index ["actor_id"], name: "index_movies_and_actors_on_actor_id", using: :btree
-    t.index ["movie_id"], name: "index_movies_and_actors_on_movie_id", using: :btree
   end
 
 end

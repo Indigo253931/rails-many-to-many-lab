@@ -1,0 +1,15 @@
+<h1>Welcome to Movies Index.</h1>
+
+<% @movies.each do |movie| %>
+<p>
+<strong>Title:</strong><%=movie.title%><br>
+<strong>Description:</strong><%=movie.description%>
+<strong>Year:</strong><%=movie.year%></p>
+
+<% movie.actors.each do |actor| %>
+<p>
+<strong>First Name:</strong><%=actor.first_name%><br>
+<strong>Last Name:</strong><%=actor.last_name%>
+</p>
+<% end %>
+<% end %>
